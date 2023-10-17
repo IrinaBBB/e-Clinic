@@ -1,0 +1,13 @@
+﻿<script>
+    const topMenuToggler = document.querySelector("#top-menu-toggler");
+    const topMenuItems = document.querySelector("#top-menu-items");
+
+    topMenuToggler.addEventListener('click', function () {
+        topMenuToggler.classList.toggle('open');
+        if (topMenuToggler.classList.contains('open')) {
+            topMenuItems.classList.add('top-[75px]', 'opacity-100');
+        } else {
+            topMenuItems.classList.remove('top-[75px]', 'opacity-100');
+        }
+    });
+</script>

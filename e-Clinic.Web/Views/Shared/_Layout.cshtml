@@ -1,26 +1,23 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@ViewData["Title"] - e-Clinic</title>
-    @*   <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> *@
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
-    <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true"/>
+    @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/> *@
+    <link rel="stylesheet" href="~/css/styles.css"/>
+    <link rel="stylesheet" href="~/css/site.css"/>
 </head>
 <body class="bg-teal-50">
 <partial name="~/Views/Partials/_Menu.cshtml"/>
 @RenderBody()
-
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="~/js/site.js" asp-append-version="true"></script>
-<script>
-    function Menu(e){
-      let list = document.querySelector('ul');
-      e.name === 'menu' ? (e.name = "close", list.classList.add('top-[75px]') , list.classList.add('opacity-100')) :( e.name = "menu" ,list.classList.remove('top-[75px]'),list.classList.remove('opacity-100'))
-    }
-</script>
+<script src="~/js/site.js" type="text/javascript"></script>
 @await RenderSectionAsync("Scripts", required: false)
+<partial name="~/Views/Partials/_MenuScript.cshtml"/>
 </body>
+
 </html>

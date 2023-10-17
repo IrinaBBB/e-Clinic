@@ -2,3 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
+.red-class {
+    background: red !important;
+}

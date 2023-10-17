@@ -1,14 +1,14 @@
-﻿<nav class=" bg-white shadow md:flex md:items-center md:justify-start">
+﻿<nav class="bg-white shadow md:flex md:items-center md:justify-start">
     <div class="flex px-12 py-2 z-[10] bg-white relative justify-between items-center ">
         <span class="text-2xl font-[Poppins] cursor-pointer">
             <img class="h-14 inline"
-                 src="~/icons/logo.svg" alt="e-Clinic logo" />
+                 src="~/icons/logo.svg" alt="e-Clinic logo"/>
         </span>
-        <span class="text-3xl cursor-pointer mx-2 md:hidden block" onclick="Menu(this)">
-            <img src="~/icons/menu.svg" alt="menu" class="w-10" />
+        <span id="top-menu-toggler" class="text-3xl cursor-pointer mx-2 md:hidden block">
+            <img src="~/icons/menu.svg" alt="menu" class="w-10"/>
         </span>
     </div>
-    <ul class="py-4 z-[1] absolute bg-white w-full left-0 opacity-0 top-[-400px] transition-all ease-in duration-700 md:z-auto md:static md:flex md:items-center md:w-auto md:py-0 md:pl-0 pl-7 md:opacity-100">
+    <ul id="top-menu-items" class="py-4 z-[1] absolute bg-white w-full left-0 opacity-0 top-[-400px] transition-all ease-in duration-300 md:z-auto md:static md:flex md:items-center md:w-auto md:py-0 md:pl-0 pl-7 md:opacity-100">
         <li class="mx-4 my-6 md:my-0">
             <a asp-controller="Home" asp-action="Index" class="block text-md uppercase text-teal-600 hover:text-teal-900 duration-50">Home</a>
         </li>
@@ -18,4 +18,3 @@
     </ul>
 </nav>
 
-  
