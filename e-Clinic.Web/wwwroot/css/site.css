@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-.red-class {
-    background: red !important;
+.bg-blue-gradient {
+    background: linear-gradient( -45deg, #2563eb, #172554 );
+}
+
+input {
+    accent-color: theme(colors.teal.700);
+}
+    
+h1 {
+    text-align: center;
 }

@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>@ViewData["Title"] - e-Clinic</title>
+    @*     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/> *@
+    <link rel="stylesheet" href="~/css/styles.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="relative h-screen overflow-hidden flex bg-cover bg-bottom bg-[url('../img/bg-identity.jpg')] items-center justify-center">
+        <div class="absolute col-start-1 row-start-1 bg-gradient-to-r from-teal-300/75 to-teal-200/75 w-screen h-screen"></div>
+        <div class="bg-teal-50 z-10 lg:w-5/12 md:6/12 w-10/12 shadow-3xl">
+            <div class="group bg-teal-700 text-white absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full p-4 md:p-8 hover:scale-110 duration-300">
+                <img src="~/img/logo-light.svg" alt="e-Clinic logo" class="w-20">
+            </div>
+            <div class="p-12 md:p-24">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" type="text/javascript"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>
