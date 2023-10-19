@@ -8,13 +8,14 @@
             <img src="~/icons/menu.svg" alt="menu" class="w-10"/>
         </span>
     </div>
-    <ul id="top-menu-items" class="py-4 z-[100] absolute bg-white w-full left-0 opacity-0 top-[-400px] transition-all ease-in duration-300 md:z-auto md:static md:flex md:items-center md:w-auto md:py-0 md:pl-0 pl-7 md:opacity-100">
+    <ul id="top-menu-items" class="py-4 z-[100] absolute bg-white w-full left-0 opacity-0 top-[-400px] transition-all ease-in duration-700 md:z-auto md:static md:flex md:flex-1 md:items-center md:justify-start md:w-auto md:py-0 md:pl-0 pl-7 md:opacity-100">
         <li class="mx-4 my-6 md:my-0">
             <a asp-controller="Home" asp-action="Index" class="block text-md uppercase text-teal-600 hover:text-teal-900 duration-50">Home</a>
         </li>
-        <li class="mx-4 my-6 md:my-0">
-            <a asp-controller="Home" asp-action="Privacy" class="block text-md uppercase text-teal-600 hover:text-teal-900 duration-50">Privacy</a>
+        <li class="mx-4 my-6 md:my-0 md:me-auto">
+            <a asp-controller="Home" asp-action="Privacy" class="block text-md uppercase text-teal-600  hover:text-teal-900 duration-50">Privacy</a>
         </li>
+        <partial name="~/Areas/Identity/Pages/Views/Shared/_LoginPartial.cshtml"/>
     </ul>
 </nav>
 

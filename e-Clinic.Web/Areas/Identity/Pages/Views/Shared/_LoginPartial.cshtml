@@ -1,0 +1,15 @@
+﻿@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <li class="mx-4 my-6 md:my-0">
+        <a id="manage" class="block text-md uppercase text-teal-600 hover:text-teal-900 duration-50" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+    </li>
+    <li class="mx-4 my-6 md:my-0 md:me-20">
+        <form id="logoutForm" class="block text-md uppercase text-teal-600 hover:text-teal-900 duration-50" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button id="logout" type="submit" class="uppercase">Logout</button>
+        </form>
+    </li>
+}
+
