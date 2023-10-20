@@ -24,6 +24,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\e-Clinic.DataAccess\e-Clinic.DataAccess.csproj" />
+	  <ProjectReference Include="..\e-Clinic.Utility\e-Clinic.Utility.csproj" />
 	</ItemGroup>
 	<ItemGroup>
 		<UpToDateCheckBuilt Include="wwwroot/css/site.css" Set="Css" />

@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "e-Clinic.Web", "e-Clinic.Web\e-Clinic.Web.csproj", "{9C26F517-6903-4A70-9FCD-3513C360E34B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "e-Clinic.Web", "e-Clinic.Web\e-Clinic.Web.csproj", "{9C26F517-6903-4A70-9FCD-3513C360E34B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "e-Clinic.DataAccess", "e-Clinic.DataAccess\e-Clinic.DataAccess.csproj", "{3B2C65EB-8536-4D8E-B2FB-5E3C320E2332}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "e-Clinic.DataAccess", "e-Clinic.DataAccess\e-Clinic.DataAccess.csproj", "{3B2C65EB-8536-4D8E-B2FB-5E3C320E2332}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "e-Clinic.Utility", "e-Clinic.Utility\e-Clinic.Utility.csproj", "{4E31D778-96AB-47B6-8A59-E84701E0B85D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{3B2C65EB-8536-4D8E-B2FB-5E3C320E2332}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B2C65EB-8536-4D8E-B2FB-5E3C320E2332}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B2C65EB-8536-4D8E-B2FB-5E3C320E2332}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E31D778-96AB-47B6-8A59-E84701E0B85D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E31D778-96AB-47B6-8A59-E84701E0B85D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E31D778-96AB-47B6-8A59-E84701E0B85D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E31D778-96AB-47B6-8A59-E84701E0B85D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
