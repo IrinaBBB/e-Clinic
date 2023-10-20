@@ -8,12 +8,12 @@ using Microsoft.AspNetCore.Identity;
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("IdentityContextConnection") ?? throw new InvalidOperationException("Connection string 'IdentityContextConnection' not found.");
 
-builder.Services.AddDbContext<IdentityContext>(options =>
+builder.Services.AddDbContext<ApplicationContext>(options =>
     options.UseSqlServer(connectionString));
 
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddRoles<IdentityRole>()
-    .AddEntityFrameworkStores<IdentityContext>();
+    .AddEntityFrameworkStores<ApplicationContext>();
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IClaimsTransformation, ClaimsTransformer>();

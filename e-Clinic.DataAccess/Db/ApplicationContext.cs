@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace e_Clinic.DataAccess.Db;
 
-public class IdentityContext : IdentityDbContext<ApplicationUser>
+public class ApplicationContext : IdentityDbContext<ApplicationUser>
 {
-    public IdentityContext(DbContextOptions<IdentityContext> options)
+    public ApplicationContext(DbContextOptions<ApplicationContext> options)
         : base(options)
     {
     }

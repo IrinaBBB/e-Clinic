@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace e_Clinic.DataAccess.Db.Migrations.Identity
+namespace e_Clinic.DataAccess.Db.Migrations
 {
-    public partial class AddIdentityTables : Migration
+    public partial class AddIdentity : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

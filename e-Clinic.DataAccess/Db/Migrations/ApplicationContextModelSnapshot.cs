@@ -3,19 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using e_Clinic.DataAccess.Db;
 
 #nullable disable
 
-namespace e_Clinic.DataAccess.Db.Migrations.Identity
+namespace e_Clinic.DataAccess.Db.Migrations
 {
-    [DbContext(typeof(IdentityContext))]
-    [Migration("20231018092002_AddIdentityTables")]
-    partial class AddIdentityTables
+    [DbContext(typeof(ApplicationContext))]
+    partial class ApplicationContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

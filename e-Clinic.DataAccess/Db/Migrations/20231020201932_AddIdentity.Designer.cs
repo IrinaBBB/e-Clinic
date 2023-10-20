@@ -9,11 +9,11 @@ using e_Clinic.DataAccess.Db;
 
 #nullable disable
 
-namespace e_Clinic.DataAccess.Db.Migrations.Identity
+namespace e_Clinic.DataAccess.Db.Migrations
 {
-    [DbContext(typeof(IdentityContext))]
-    [Migration("20231020110106_AddFirstNameAndLastNameFields")]
-    partial class AddFirstNameAndLastNameFields
+    [DbContext(typeof(ApplicationContext))]
+    [Migration("20231020201932_AddIdentity")]
+    partial class AddIdentity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -42,14 +42,6 @@ namespace e_Clinic.DataAccess.Db.Migrations.Identity
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
-
-                    b.Property<string>("FirstName")
-                        .HasMaxLength(225)
-                        .HasColumnType("nvarchar(225)");
-
-                    b.Property<string>("LastName")
-                        .HasMaxLength(225)
-                        .HasColumnType("nvarchar(225)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
