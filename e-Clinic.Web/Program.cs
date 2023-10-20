@@ -3,6 +3,7 @@ using e_Clinic.DataAccess.Db;
 using e_Clinic.DataAccess.Entities.Identity;
 using Microsoft.AspNetCore.Authentication;
 using e_Clinic.Web.Areas.Identity;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("IdentityContextConnection") ?? throw new InvalidOperationException("Connection string 'IdentityContextConnection' not found.");
@@ -11,6 +12,7 @@ builder.Services.AddDbContext<IdentityContext>(options =>
     options.UseSqlServer(connectionString));
 
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<IdentityContext>();
 
 builder.Services.AddControllersWithViews();
