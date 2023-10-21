@@ -1,0 +1,88 @@
+﻿@{
+    ViewData["Title"] = "Patient List";
+}
+
+
+<section class="container mx-auto p-6">
+    <div class="mb-2 inline-block">
+        <div class="relative mt-1">
+            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                <svg class="w-8 h-5 text-teal-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                          d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                          clip-rule="evenodd">
+                    </path>
+                </svg>
+            </div>
+            <input type="text" id="table-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-80 pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500" placeholder="Search for items">
+        </div>
+    </div>
+    <div class="mb-1 inline-block">
+        <div class="relative mt-1">
+            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                <svg class="w-8 h-5 text-teal-500 dark:text-teal-400" fill="currentColor" viewBox="0 0 20 20"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                          d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                          clip-rule="evenodd">
+                    </path>
+                </svg>
+            </div>            
+            <input type="date" id="table-search" class="bg-gray-50 accent-pink-500 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-80 pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500" placeholder="Search for items">
+        </div>
+    </div>
+    <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
+        <div class="w-full overflow-x-auto">
+            <table class="w-full">
+                <thead>
+                <tr class="text-md w-10 font-semibold tracking-wide text-left text-white bg-teal-700 uppercase border-b border-gray-600">
+                    <th class="px-4 py-3">Name</th>
+                    <th class="px-4 py-3">Age</th>
+                    <th class="px-4 py-3">&nbsp;</th>
+                </tr>
+                </thead>
+                <tbody class="bg-white">
+                <tr class="text-gray-700 even:bg-white odd:bg-teal-50 hover:bg-teal-100">
+                    <td class="px-4 py-3 border">
+                        <div class="flex items-center text-md">
+                            <div class="relative w-8 h-8 mr-3 rounded-full md:block">
+                                <img class="object-cover w-full h-full rounded-full" src="https://images.pexels.com/photos/5212324/pexels-photo-5212324.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="" loading="lazy"/>
+                                <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-black">Kristian Iversen</p>
+                                <p class="text-sm text-gray-600">Date of Birth: 01.02.1958</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="px-4 py-3 text-ms font-semibold border">22</td>
+                    <td class="px-4 py-3 text-xs border">
+                        <a href="#" class="px-2 py-2 me-1 font-semibold uppercase leading-tight text-yellow-700 bg-yellow-100 rounded-sm transition ease-in-out delay-150 hover:bg-yellow-200">Info</a>
+                        <a href="#" class="px-2 py-2 font-semibold uppercase leading-tight text-green-700 bg-teal-100 rounded-sm transition ease-in-out delay-150 hover:bg-teal-200">Add Visit</a>
+                    </td>
+                </tr>
+                    <tr class="text-gray-700 even:bg-white odd:bg-teal-50 hover:bg-teal-100">
+                    <td class="px-4 py-3 border">
+                        <div class="flex items-center text-md">
+                            <div class="relative w-8 h-8 mr-3 rounded-full md:block">
+                                <img class="object-cover w-full h-full rounded-full" src="https://images.pexels.com/photos/5212324/pexels-photo-5212324.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="" loading="lazy"/>
+                                <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-black">Kristian Iversen</p>
+                                <p class="text-sm text-gray-600">Date of Birth: 01.02.1958</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="px-4 py-3 text-ms font-semibold border">22</td>
+                    <td class="px-4 py-3 text-xs border">
+                        <a href="#" class="px-2 py-2 me-1 font-semibold uppercase leading-tight text-yellow-700 bg-yellow-100 rounded-sm transition ease-in-out delay-150 hover:bg-yellow-200">Info</a>
+                        <a href="#" class="px-2 py-2 font-semibold uppercase leading-tight text-green-700 bg-teal-100 rounded-sm transition ease-in-out delay-150 hover:bg-teal-200">Add Visit</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

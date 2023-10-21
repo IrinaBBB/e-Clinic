@@ -1,4 +1,5 @@
-﻿using e_Clinic.DataAccess.Entities.Identity;
+﻿using e_Clinic.DataAccess.Entities;
+using e_Clinic.DataAccess.Entities.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,8 +15,9 @@ public class ApplicationContext : IdentityDbContext<ApplicationUser>
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
-        // Customize the ASP.NET Identity model and override the defaults if needed.
-        // For example, you can rename the ASP.NET Identity table names and more.
-        // Add your customizations after calling base.OnModelCreating(builder);
     }
+
+    public DbSet<Patient> Patients { get; set; } = null!;
+    public DbSet<Visit> Visits { get; set; } = null!;
 }
+
