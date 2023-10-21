@@ -1,8 +1,8 @@
 ﻿namespace e_Clinic.Utility
 {
-    public static class ExtensionMethods
+    public static class UtilFunctions
     {
-        public static int GetAge(this DateTime dateOfBirth)
+        public static int GetAge(DateTime dateOfBirth)
         {
             var today = DateTime.Today;
 

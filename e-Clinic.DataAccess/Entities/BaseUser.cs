@@ -16,5 +16,8 @@ namespace e_Clinic.DataAccess.Entities
         [Required]
         [MaxLength(255)]
         public string LastName { get; set; } = string.Empty;
+
+        [Required]
+        public DateTime DateOfBirth { get; set; }
     }
 }

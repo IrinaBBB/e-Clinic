@@ -1,9 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using e_Clinic.DataAccess.Db;
 using e_Clinic.DataAccess.Entities.Identity;
+using e_Clinic.Repository;
+using e_Clinic.Repository.IRepository;
 using Microsoft.AspNetCore.Authentication;
 using e_Clinic.Web.Areas.Identity;
 using Microsoft.AspNetCore.Identity;
+using e_Clinic.Repository.Mapping.Resolvers;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("IdentityContextConnection") ?? throw new InvalidOperationException("Connection string 'IdentityContextConnection' not found.");
@@ -17,6 +20,11 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IClaimsTransformation, ClaimsTransformer>();
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddTransient<AgeResolver>();
+
+builder.Services.AddScoped<IPatientRepository, PatientRepository>();
 
 var app = builder.Build();
 

@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace e_Clinic.Models.Patient
+﻿namespace e_Clinic.Models.Patient
 {
     public class PatientViewModel
     {
@@ -8,6 +6,6 @@ namespace e_Clinic.Models.Patient
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
         public DateTime DateOfBirth { get; set; }
-        public int Age { get; set; }
+        public int Age { get; set; } 
     }
 }

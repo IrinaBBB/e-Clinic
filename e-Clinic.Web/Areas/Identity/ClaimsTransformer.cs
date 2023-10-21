@@ -20,7 +20,7 @@ namespace e_Clinic.Web.Areas.Identity
             if (clonedPrincipal.Identity == null) return clonedPrincipal;
 
             var identity = (ClaimsIdentity) clonedPrincipal.Identity;
-            var existingClaim = identity.Claims.FirstOrDefault(c => c.Type == EClinicClaimTypes.FirstName);
+            var existingClaim = identity.Claims.FirstOrDefault(c => c.Type == Utility.ClaimTypes.FirstName);
             //if (existingClaim == null) 
             //{
             //    var nameIdClaim = identity.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);

@@ -8,7 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\e-Clinic.DataAccess\e-Clinic.DataAccess.csproj" />
     <ProjectReference Include="..\e-Clinic.Models\e-Clinic.Models.csproj" />
+    <ProjectReference Include="..\e-Clinic.Utility\e-Clinic.Utility.csproj" />
   </ItemGroup>
 
 </Project>

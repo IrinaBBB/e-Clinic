@@ -7,4 +7,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\e-Clinic.Utility\e-Clinic.Utility.csproj" />
+  </ItemGroup>
+
 </Project>
