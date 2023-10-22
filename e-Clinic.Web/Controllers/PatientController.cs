@@ -5,18 +5,21 @@ using Microsoft.AspNetCore.Mvc;
 namespace e_Clinic.Web.Controllers
 {
     [Authorize]
-    public class PatientController : Controller
+    public class PatientController : BaseController
     {
-        private readonly IPatientRepository _patientRepository;
+        //private readonly IUnitOfWork _unitOfWork;
 
-        public PatientController(IPatientRepository patientRepository)
-        {
-            _patientRepository = patientRepository;
-        }
+        //public PatientController(IUnitOfWork unitOfWork)
+        //{
+        //   _unitOfWork = unitOfWork;
+        //}
+
+        public PatientController(IUnitOfWork unitOfWork) : base(unitOfWork) { }
+
         public async Task<IActionResult> Index()
         {
-            var patients = await _patientRepository.GetPatientListAsync();            
+            var patients = await UnitOfWork.Patients.GetPatientListAsync();
             return View(patients);
-        }
+        }        
     }
 }
