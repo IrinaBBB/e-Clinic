@@ -7,13 +7,6 @@ namespace e_Clinic.Web.Controllers
     [Authorize]
     public class PatientController : BaseController
     {
-        //private readonly IUnitOfWork _unitOfWork;
-
-        //public PatientController(IUnitOfWork unitOfWork)
-        //{
-        //   _unitOfWork = unitOfWork;
-        //}
-
         public PatientController(IUnitOfWork unitOfWork) : base(unitOfWork) { }
 
         public async Task<IActionResult> Index()

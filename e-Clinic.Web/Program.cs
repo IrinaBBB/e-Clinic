@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication;
 using e_Clinic.Web.Areas.Identity;
 using Microsoft.AspNetCore.Identity;
 using e_Clinic.Repository.Mapping.Resolvers;
+using e_Clinic.DataAccess;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("IdentityContextConnection") ?? throw new InvalidOperationException("Connection string 'IdentityContextConnection' not found.");
@@ -46,4 +47,22 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
+
+using var scope = app.Services.CreateScope();
+var services = scope.ServiceProvider;
+try
+{
+    var context = services.GetRequiredService<ApplicationContext>();
+    var logger = services.GetService<ILogger<ApplicationContext>>()!;
+    var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
+    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+    await context.Database.MigrateAsync();
+    await SeedData.SeedAsync(context, logger);
+    //await Seed.SeedUsers(userManager, roleManager);
+}
+catch (Exception ex)
+{
+    var logger = services.GetService<ILogger<Program>>();
+    logger!.LogError(ex, "An error occurred during migration");
+}
 app.Run();
