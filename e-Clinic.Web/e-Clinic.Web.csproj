@@ -29,13 +29,5 @@
 	  <ProjectReference Include="..\e-Clinic.Repositories\e-Clinic.Repository.csproj" />
 	  <ProjectReference Include="..\e-Clinic.Utility\e-Clinic.Utility.csproj" />
 	</ItemGroup>
-	<ItemGroup>
-		<UpToDateCheckBuilt Include="wwwroot/css/site.css" Set="Css" />
-		<UpToDateCheckBuilt Include="tailwind.config.js" Set="Css" />
-	</ItemGroup>
-
-	<Target Name="Tailwind" BeforeTargets="Build">
-		<Exec Command="npm run css:build" />
-	</Target>
-
+	
 </Project>
