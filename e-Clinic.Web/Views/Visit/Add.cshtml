@@ -1,0 +1,122 @@
+﻿@{
+    ViewData["Title"] = "Add Visit";
+}
+@model AddVisitViewModel
+
+<h1>@Model.PatientViewModel.FirstName</h1>
+<main class="px-6 sm:px-12 md:px-36 pt-6">
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-3">
+        <div class="col-span-2">
+            <div class="flex mb-2 flex-col px-8 items-center bg-white shadow-lg ring-1 ring-black/5 rounded-xl md:flex-row">
+                <img class="object-cover w-full me-6 rounded-t-lg h-32 md:h-auto md:w-16 md:rounded-none md:rounded-l-lg"
+                     src="~/icons/logo.svg" alt="">
+                <div class="flex flex-col justify-between p-4 leading-normal">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-teal-700">Kristian Iversen</h5>
+                    <p class="font-normal text-teal-900">
+                        <span class="text-teal-700 uppercase text-sm font-bold">Born: </span>29.07.1980
+                    </p>
+                    <p class="font-normal text-teal-900">
+                        <span class="text-teal-700 uppercase text-sm font-bold">Age: </span> 43
+                    </p>
+                </div>
+            </div>
+            <form class="p-6 items-center bg-white shadow-lg ring-1 ring-black/5 rounded-xl md:flex-row">
+                <div class="mb-6">
+                    <input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01"
+                           max="2018-12-31" />
+                    <input type="time" id="appt" name="appt" min="09:00" max="18:00" required />
+                </div>
+                <div>
+                    <label for="message" class="block mb-2 text-sm font-medium text-teal-900">Description</label>
+                    <textarea id="message" rows="4"
+                              class="block p-2.5 w-full text-sm text-teal-900 bg-teal-50 rounded-lg border border-gray-300 focus:ring-teal-500 focus:border-teal-500"
+                              placeholder="Patient's description..."></textarea>
+                </div>
+                <button id="login-submit" type="submit"
+                        class="group mt-6 relative h-10 w-full overflow-hidden rounded bg-teal-700 text-md tracking-wide uppercase text-white"
+                        pb-role="submit">
+                    Add visit
+                    <div class="absolute inset-0 h-full w-full scale-0 rounded transition-all duration-300 group-hover:scale-100 group-hover:bg-white/30"></div>
+                </button>
+            </form>
+        </div>
+        <div>
+            <h2 class="uppercase text-teal-800 mb-2 font-bold">Previous Visits</h2>
+            <div class="overflow-auto max-h-[650px] w-full relative mx-auto bg-white shadow-lg ring-1 ring-black/5 rounded-xl flex flex-col divide-y">
+                <div class="flex items-center gap-4 p-4">
+                    <img class="w-12 h-12 rounded-full" src="img/logo.svg">
+                    <div class="flex flex-col">
+                        <strong class="text-slate-900 text-sm font-medium">Andrew Alfred</strong>
+                        <span class="text-slate-500 text-sm font-medium">Technical advisor</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 p-4">
+                    <img class="w-12 h-12 rounded-full" src="~/icons/logo.svg">
+                    <div class="flex flex-col">
+                        <strong class="text-slate-900 text-sm font-medium">Andrew Alfred</strong>
+                        <span class="text-slate-500 text-sm font-medium">Technical advisor</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 p-4">
+                    <img class="w-12 h-12 rounded-full" src="img/logo.svg">
+                    <div class="flex flex-col">
+                        <strong class="text-slate-900 text-sm font-medium">Andrew Alfred</strong>
+                        <span class="text-slate-500 text-sm font-medium">Technical advisor</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 p-4">
+                    <img class="w-12 h-12 rounded-full" src="img/logo.svg">
+                    <div class="flex flex-col">
+                        <strong class="text-slate-900 text-sm font-medium">Andrew Alfred</strong>
+                        <span class="text-slate-500 text-sm font-medium">Technical advisor</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 p-4">
+                    <img class="w-12 h-12 rounded-full" src="img/logo.svg">
+                    <div class="flex flex-col">
+                        <strong class="text-slate-900 text-sm font-medium">Andrew Alfred</strong>
+                        <span class="text-slate-500 text-sm font-medium">Technical advisor</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 p-4">
+                    <img class="w-12 h-12 rounded-full" src="img/logo.svg">
+                    <div class="flex flex-col">
+                        <strong class="text-slate-900 text-sm font-medium">Andrew Alfred</strong>
+                        <span class="text-slate-500 text-sm font-medium">Technical advisor</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 p-4">
+                    <img class="w-12 h-12 rounded-full" src="img/logo.svg">
+                    <div class="flex flex-col">
+                        <strong class="text-slate-900 text-sm font-medium">Andrew Alfred</strong>
+                        <span class="text-slate-500 text-sm font-medium">Technical advisor</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 p-4">
+                    <img class="w-12 h-12 rounded-full" src="img/logo.svg">
+                    <div class="flex flex-col">
+                        <strong class="text-slate-900 text-sm font-medium">Andrew Alfred</strong>
+                        <span class="text-slate-500 text-sm font-medium">Technical advisor</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 p-4">
+                    <img class="w-12 h-12 rounded-full" src="img/logo.svg">
+                    <div class="flex flex-col">
+                        <strong class="text-slate-900 text-sm font-medium">Andrew Alfred</strong>
+                        <span class="text-slate-500 text-sm font-medium">Technical advisor</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 p-4">
+                    <img class="w-12 h-12 rounded-full" src="img/logo.svg">
+                    <div class="flex flex-col">
+                        <strong class="text-slate-900 text-sm font-medium">Andrew Alfred</strong>
+                        <span class="text-slate-500 text-sm font-medium">Technical advisor</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+

@@ -11,18 +11,18 @@ namespace e_Clinic.DataAccess
         {
             var patients = new List<Patient>
             {
-                new Patient
+                new()
                 {
                     FirstName = "Kristian", LastName = "Iversen", DateOfBirth = new DateTime(1984, 6, 29),
                     Visits = new List<Visit>
                     {
-                        new Visit
+                        new()
                         {
                             Description =
                                 "The patient complained of a sharp, stabbing pain in the lower abdomen that had been worsening over the last two days.",
                             DateTime = new DateTime(2023, 09, 12, 12, 15, 00)
                         },
-                        new Visit
+                        new()
                         {
                             Description =
                                 "The patient reported having a fever, sore throat, and body aches for the past 48 hours",
@@ -30,30 +30,30 @@ namespace e_Clinic.DataAccess
                         },
                     },
                 },
-                new Patient
+                new()
                 {
                     FirstName = "Anna", LastName = "Larsen", DateOfBirth = new DateTime(1966, 11, 21),
                     Visits = new List<Visit>
                     {
-                        new Visit
+                        new()
                         {
                             Description =
                                 "The patient's right eye exhibited redness, itchiness, and excessive watering for about a week.",
                             DateTime = new DateTime(2023, 09, 12, 12, 15, 00)
                         },
-                        new Visit
+                        new()
                         {
                             Description =
                                 "The patient expressed concerns about a persistent, unexplained rash on their arms and legs.",
                             DateTime = new DateTime(2023, 08, 12, 11, 00, 00)
                         },
-                        new Visit
+                        new()
                         {
                             Description =
                                 "The patient conveyed worries about recurring stomach pain, which seemed to worsen after meals.",
                             DateTime = new DateTime(2023, 07, 12, 11, 00, 00)
                         },
-                        new Visit
+                        new()
                         {
                             Description =
                                 "The patient complained of a constant, throbbing pain in their lower back that had been bothering them for the past month.",
@@ -61,11 +61,11 @@ namespace e_Clinic.DataAccess
                         },
                     },
                 },
-                new Patient
+                new()
                 {
                     FirstName = "Sven", LastName = "Andersen", DateOfBirth = new DateTime(1975, 10, 30),
                 },
-                new Patient
+                new()
                 {
                     FirstName = "Elin", LastName = "Nygaard", DateOfBirth = new DateTime(1991, 7, 2),
                 },

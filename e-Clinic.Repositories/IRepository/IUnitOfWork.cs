@@ -3,6 +3,7 @@
     public interface IUnitOfWork
     {
         IPatientRepository Patients { get; }
+        IVisitRepository Visits { get; }
         int Complete();
     }
 }

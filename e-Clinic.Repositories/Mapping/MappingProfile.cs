@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using e_Clinic.DataAccess.Entities;
 using e_Clinic.Models.Patient;
+using e_Clinic.Models.Visit;
 using e_Clinic.Repository.Mapping.Resolvers;
 
 namespace e_Clinic.Repository.Mapping
@@ -15,6 +16,10 @@ namespace e_Clinic.Repository.Mapping
                     opt.MapFrom<AgeResolver>());
 
             CreateMap<PatientViewModel, Patient>();
+
+            // VISIT //
+            CreateMap<Visit, VisitViewModel>();
+            CreateMap<VisitViewModel, Visit>();
         }
     }
 }

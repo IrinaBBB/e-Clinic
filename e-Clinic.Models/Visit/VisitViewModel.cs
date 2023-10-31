@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace e_Clinic.DataAccess.Entities
+namespace e_Clinic.Models.Visit
 {
-    public class Visit
+    public class VisitViewModel
     {
         public int Id { get; set; }
 
@@ -14,6 +14,5 @@ namespace e_Clinic.DataAccess.Entities
 
         [Required]
         public int PatientId { get; set; }
-        public Patient? Patient { get; set; }
     }
 }

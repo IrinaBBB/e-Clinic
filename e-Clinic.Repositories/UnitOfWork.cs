@@ -14,9 +14,11 @@ namespace e_Clinic.Repository
             _context = context;
             _mapper = mapper;
             Patients = new PatientRepository(context, mapper);
+            Visits = new VisitRepository(context, mapper);
         }
 
         public IPatientRepository Patients { get; }
+        public IVisitRepository Visits { get; }
 
         public int Complete()
         {
