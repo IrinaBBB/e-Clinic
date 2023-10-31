@@ -5,13 +5,50 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
-    <li class="mx-4 my-6 md:my-0">
-        <a id="manage" class="block text-md uppercase text-teal-600 hover:text-teal-900 duration-50" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.FirstName)?.Value ?? "User")!</a>
+    @* <li>
+        <a id="manage" class="block uppercase py-2 pl-3 pr-4 text-teal-700 bg-white rounded md:bg-transparent md:text-teal-700 md:p-0" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.FirstName)?.Value ?? "User")!</a>
     </li>
-    <li class="mx-4 my-6 md:my-0 md:me-20">
-        <form id="logoutForm" class="block text-md uppercase text-teal-600 hover:text-teal-900 duration-50" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+    <li>
+        <form id="logoutForm" class="block uppercase py-2 pl-3 pr-4 text-teal-700 bg-white rounded md:bg-transparent md:text-teal-700 md:p-0" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
             <button id="logout" type="submit" class="uppercase">Logout</button>
         </form>
-    </li>
+    </li> *@
+    <div class="flex items-center md:order-2">
+        <button type="button" class="flex mr-3 text-sm bg-teal-50 border-solid border-2 border-teal-600 rounded-full md:mr-0 focus:ring-4 focus:ring-teal-300" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+            <span class="sr-only">Open user menu</span>
+            <img class="w-8 h-8 p-1 rounded-full" src="~/icons/user.svg" alt="user photo">
+        </button>
+        <!-- Dropdown menu -->
+        <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-teal-100 rounded-lg shadow" id="user-dropdown">
+            <div class="px-6 py-3">
+                <span class="block text-sm text-teal-900">
+                    <a id="manage" class="block uppercase py-2 pl-3 pr-4 text-teal-700 bg-white rounded md:bg-transparent md:text-teal-700 md:p-0" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.FirstName)?.Value ?? "User")</a>
+                </span>
+                <span class="block text-sm  text-teal-500 truncate">@UserManager.GetUserName(User)</span>
+            </div>
+            <ul class="py-2" aria-labelledby="user-menu-button">
+                <li>
+                    <a href="#" class="block px-4 py-2 text-sm text-teal-700 hover:bg-teal-100">Dashboard</a>
+                </li>
+                <li>
+                    <a href="#" class="block px-4 py-2 text-sm text-teal-700 hover:bg-teal-100">Settings</a>
+                </li>
+                <li>
+                    <a href="#" class="block px-4 py-2 text-sm text-teal-700 hover:bg-teal-100">Earnings</a>
+                </li>
+                <li>
+                    <form id="logoutForm" class="block px-4 py-2 text-sm text-teal-700 hover:bg-teal-100" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                        <button id="logout" type="submit">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+        <button data-collapse-toggle="navbar-user" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-teal-500 rounded-lg md:hidden hover:bg-teal-100 focus:outline-none focus:ring-2 focus:ring-teal-200" aria-controls="navbar-user" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
+            </svg>
+        </button>
+    </div>
 }
 
