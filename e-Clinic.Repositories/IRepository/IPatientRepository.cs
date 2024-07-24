@@ -6,6 +6,5 @@ namespace e_Clinic.Repository.IRepository
     public interface IPatientRepository
     {
         Task<ICollection<PatientViewModel>> GetPatientListAsync();
-        Task<int> AddVisitToPatientAsync(VisitViewModel visitViewModel);
     }
 }

@@ -17,9 +17,6 @@ namespace e_Clinic.Repository.Mapping
 
             CreateMap<PatientViewModel, Patient>();
 
-            // VISIT //
-            CreateMap<Visit, VisitViewModel>();
-            CreateMap<VisitViewModel, Visit>();
         }
     }
 }

@@ -11,8 +11,7 @@ namespace e_Clinic.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var patients = await UnitOfWork.Patients.GetPatientListAsync();
-            return View(patients);
+            return View();
         }        
     }
 }

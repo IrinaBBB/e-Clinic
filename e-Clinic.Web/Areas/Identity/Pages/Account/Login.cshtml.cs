@@ -3,7 +3,7 @@
 #nullable disable
 
 using System.ComponentModel.DataAnnotations;
-using e_Clinic.DataAccess.Entities.Identity;
+using e_Clinic.DataAccess.Entities;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

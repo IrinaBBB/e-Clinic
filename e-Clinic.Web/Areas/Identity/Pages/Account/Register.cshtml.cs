@@ -5,8 +5,8 @@
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 using System.Text.Encodings.Web;
+using e_Clinic.DataAccess.Entities;
 using Microsoft.AspNetCore.Authentication;
-using e_Clinic.DataAccess.Entities.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
