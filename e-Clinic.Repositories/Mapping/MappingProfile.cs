@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using e_Clinic.DataAccess.Entities;
-using e_Clinic.Models.Patient;
-using e_Clinic.Models.Visit;
+using e_Clinic.Models.ViewModels.Patient;
 using e_Clinic.Repository.Mapping.Resolvers;
 
 namespace e_Clinic.Repository.Mapping
@@ -11,11 +10,11 @@ namespace e_Clinic.Repository.Mapping
         public MappingProfile()
         {
             // PATIENT //
-            CreateMap<Patient, PatientViewModel>()
-                .ForMember(dest => dest.Age, opt =>
-                    opt.MapFrom<AgeResolver>());
+            //CreateMap<Patient, CreatePatientViewModel>()
+            //    .ForMember(dest => dest.Age, opt =>
+            //        opt.MapFrom<AgeResolver>());
 
-            CreateMap<PatientViewModel, Patient>();
+            CreateMap<CreatePatientViewModel, Patient>().ReverseMap();
 
         }
     }

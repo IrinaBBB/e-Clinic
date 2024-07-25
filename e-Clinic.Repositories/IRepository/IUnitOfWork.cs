@@ -1,7 +1,9 @@
 ﻿namespace e_Clinic.Repository.IRepository
 {
-    public interface IUnitOfWork
+    public interface IUnitOfWork : IDisposable
     {
-        int Complete();
+        IPatientRepository Patient { get; }
+        void Save();
     }
 }
+

@@ -1,10 +1,10 @@
-﻿using e_Clinic.Models.Patient;
-using e_Clinic.Models.Visit;
+﻿using e_Clinic.DataAccess.Entities;
+using e_Clinic.Models.ViewModels.Patient;
 
 namespace e_Clinic.Repository.IRepository
 {
-    public interface IPatientRepository
+    public interface IPatientRepository : IRepository<Patient>
     {
-        Task<ICollection<PatientViewModel>> GetPatientListAsync();
+        Task<bool> CreatePatient(CreatePatientViewModel patientViewModel);
     }
 }
