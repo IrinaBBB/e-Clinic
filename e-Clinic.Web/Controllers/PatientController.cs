@@ -2,6 +2,7 @@
 using e_Clinic.DataAccess;
 using e_Clinic.DataAccess.Entities;
 using e_Clinic.Models.ViewModels.Patient;
+using e_Clinic.Models.ViewModels.PatientViewModels;
 using e_Clinic.Repository.IRepository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -20,12 +21,25 @@ namespace e_Clinic.Web.Controllers
             _unitOfWork = unitOfWork;
         }
 
-
-        public IActionResult Index()
+        
+        public async Task<IActionResult> Index(int pageNumber = 1)
         {
-            var patients = _unitOfWork.Patient.GetAll();
-            return View(patients);
+            var pageSize = 5;
+            var pageCount = await _unitOfWork.Patient.GetPageCount(pageSize);
+            if (pageNumber > pageCount || pageNumber <= 0)
+            {
+                return RedirectToAction("Index", new { pageNumber = 1 });
+            }
+
+            var patientListViewModel = new PatientListViewModel
+            {
+                Patients = await _unitOfWork.Patient.GetPagedListAsync(pageNumber, pageSize),
+                TotalPages = pageCount,
+                CurrentPage = pageNumber,
+            };
+            return View(patientListViewModel);
         }
+
         public IActionResult Create()
         {
             return View(new CreatePatientViewModel());
@@ -37,23 +51,7 @@ namespace e_Clinic.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                //var newPatientUser = new ApplicationUser
-                //{
-                //    Email = patientViewModel.Email,
-                //    UserName = patientViewModel.Email,
-                //    Patient = _mapper.Map<Patient>(patientViewModel)
-                //};
-                //if (patientViewModel?.Password is not null)
-                //{
-                //    try
-                //    {
-                //        var result = await _userManager.CreateAsync(newPatientUser, patientViewModel.Password);
-                //        return RedirectToAction("Index");
-                //    } catch (Exception ex)
-                //    {
-                //        Console.Write(ex.Message);
-                //    }
-                //}
+               
                 await _unitOfWork.Patient.CreatePatient(patientViewModel);
 
                 TempData["success"] = "Category created successfully";

@@ -2,6 +2,7 @@
 using e_Clinic.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 
 namespace e_Clinic.Repository
@@ -20,7 +21,7 @@ namespace e_Clinic.Repository
         {
             dbSet.Add(entity);
         }
-        //includeProp - "Category,CoverType"
+
         public IEnumerable<T> GetAll(Expression<Func<T, bool>>? filter = null, string? includeProperties = null)
         {
             IQueryable<T> query = dbSet;
@@ -70,6 +71,30 @@ namespace e_Clinic.Repository
 
         }
 
+        public async Task<IEnumerable<T>> GetPagedListAsync(int pageNumber = 1, int pageSize = 50, Expression<Func<T, bool>>? filter = null, string? includeProperties = null)
+        {
+            IQueryable<T> query = dbSet;
+            if (filter != null)
+            {
+                query = query.Where(filter);
+            }
+            if (includeProperties != null)
+            {
+                foreach (var includeProp in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(includeProp);
+                }
+            }
+            return await query.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
+        }
+
+        public async Task<int> GetPageCount(int pageSize)
+        {
+            var count = await dbSet.CountAsync();
+            return (int) Math.Ceiling(count / (double)pageSize);
+        }
+
+   
         public void Remove(T entity)
         {
             dbSet.Remove(entity);

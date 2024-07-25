@@ -6,8 +6,10 @@ namespace e_Clinic.Repository.IRepository
     {
         T GetFirstOrDefault(Expression<Func<T, bool>> filter, string? includeProperties = null, bool tracked = true);
         IEnumerable<T> GetAll(Expression<Func<T, bool>>? filter = null, string? includeProperties = null);
+        Task<IEnumerable<T>> GetPagedListAsync(int pageNumber = 1, int pageSize = 50, Expression<Func<T, bool>>? filter = null, string? includeProperties = null);
         void Add(T entity);
         void Remove(T entity);
         void RemoveRange(IEnumerable<T> entity);
+        Task<int> GetPageCount(int pageSize);
     }
 }
