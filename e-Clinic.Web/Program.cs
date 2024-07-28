@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using e_Clinic.Repository.Mapping.Resolvers;
 using e_Clinic.DataAccess.Entities;
 using e_Clinic.DataAccess;
+using e_Clinic.DataAccess.DbInitializer;
 
 var builder = WebApplication.CreateBuilder(args);
 //var connectionString = builder.Configuration.GetConnectionString("eClinicDb") ?? throw new InvalidOperationException("Connection string 'eClinicDb' not found.");
@@ -44,21 +45,18 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
 
-using var scope = app.Services.CreateScope();
+var scope = app.Services.CreateScope();
 var services = scope.ServiceProvider;
-//try
-//{
-//    var context = services.GetRequiredService<ApplicationContext>();
-//    var logger = services.GetService<ILogger<ApplicationContext>>()!;
-//    var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
-//    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
-//    await context.Database.MigrateAsync();
-//    await SeedData.SeedAsync(context, logger);
-//    //await Seed.SeedUsers(userManager, roleManager);
-//}
-//catch (Exception ex)
-//{
-//    var logger = services.GetService<ILogger<Program>>();
-//    logger!.LogError(ex, "An error occurred during migration");
-//}
+var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+try
+{
+    //context.Database.Migrate();
+    await DbInitializer.Initialize(context, userManager, roleManager);
+} catch (Exception ex)
+{
+    logger.LogError(ex, "A problem occurred during migration");
+}
 app.Run();
