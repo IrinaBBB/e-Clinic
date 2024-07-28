@@ -6,5 +6,6 @@ namespace e_Clinic.Repository.IRepository
     public interface IPatientRepository : IRepository<Patient>
     {
         Task<bool> CreatePatient(CreatePatientViewModel patientViewModel);
+        void Update(Patient patient);
     }
 }

@@ -29,5 +29,12 @@
 	  <ProjectReference Include="..\e-Clinic.Repositories\e-Clinic.Repository.csproj" />
 	  <ProjectReference Include="..\e-Clinic.Utility\e-Clinic.Utility.csproj" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Update="Views\Patient\Edit.cshtml">
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	</ItemGroup>
 	
 </Project>

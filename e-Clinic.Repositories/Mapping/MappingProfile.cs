@@ -14,7 +14,9 @@ namespace e_Clinic.Repository.Mapping
             //    .ForMember(dest => dest.Age, opt =>
             //        opt.MapFrom<AgeResolver>());
 
+            CreateMap<Patient, Patient>();
             CreateMap<CreatePatientViewModel, Patient>().ReverseMap();
+            CreateMap<EditPatientViewModel, Patient>().ReverseMap();
 
         }
     }

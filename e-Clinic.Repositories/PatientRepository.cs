@@ -44,5 +44,14 @@ namespace e_Clinic.Repository
             }
             return false;
         }
+
+        public void Update(Patient patient)
+        {
+            var patientFromDb = _db.Patients.FirstOrDefault(p => p.Id == patient.Id);
+            if (patientFromDb != null)
+            {
+                _mapper.Map(patient, patientFromDb);
+            }
+        }
     }
 }

@@ -15,12 +15,19 @@ namespace e_Clinic.Web.Controllers
 
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
    
         public PatientController(IUnitOfWork unitOfWork, ApplicationDbContext context, UserManager<ApplicationUser> userManager, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
+
+        public IActionResult Info()
+        {
+            return View();
+        }
         
         public async Task<IActionResult> Index(int pageNumber = 1)
         {
@@ -58,6 +65,38 @@ namespace e_Clinic.Web.Controllers
                 return RedirectToAction("Index");
             }
             return View(patientViewModel);
+        }
+
+        public IActionResult Edit(int id)
+        {
+            var patient = _unitOfWork.Patient.GetFirstOrDefault(p => p.Id == id);
+            var viewModel = _mapper.Map<EditPatientViewModel>(patient);
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(EditPatientViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+
+            var patient = _mapper.Map<Patient>(viewModel);
+
+            var patientFromDb = _unitOfWork.Patient.GetFirstOrDefault(p => p.Id == patient.Id);
+            if (patientFromDb == null)
+            {
+                return NotFound();
+            }
+
+            _mapper.Map(viewModel, patientFromDb); 
+
+            _unitOfWork.Patient.Update(patientFromDb);
+            _unitOfWork.Save();
+
+            return RedirectToAction("Index"); 
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace e_Clinic.Models.ViewModels.Patient
 {
-    public class CreatePatientViewModel
+    public class EditPatientViewModel
     {
         public int Id { get; set; }
 
@@ -16,7 +16,7 @@ namespace e_Clinic.Models.ViewModels.Patient
 
         [Required(ErrorMessage = "*required")]
         [Display(Name = "Date of Birth")]
-        public DateTime? DateOfBirth { get; set; } = new DateTime(2000, 1, 1);
+        public DateTime? DateOfBirth { get; set; } 
 
         [Required(ErrorMessage = "*required")]
         [Display(Name = "Gender")]
@@ -33,10 +33,6 @@ namespace e_Clinic.Models.ViewModels.Patient
         [Required(ErrorMessage = "*required")]
         [Display(Name = "Address")]
         public string? Address { get; set; }
-
-        [Required(ErrorMessage = "*required")]
-        [Display(Name = "Password")]
-        public string? Password { get; set; }
 
         [Display(Name = "Emergency Contact")]
         public string? EmergencyContact { get; set; }

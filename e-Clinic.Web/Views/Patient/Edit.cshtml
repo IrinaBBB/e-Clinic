@@ -1,0 +1,82 @@
+﻿@{
+    ViewData["Title"] = "Create Patient";
+}
+@model EditPatientViewModel
+@{
+    string getInputStyles(string fieldName)
+    {
+        return $"border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5";
+    }
+}
+<section class="container mx-auto mb-6">
+    <div class="bg-white rounded-lg shadow-md p-5 lg:w-3/5 mx-auto mt-7 ">
+        <div class="border-b-2 border-teal-500">
+            <h1 class="text-teal-900 uppercase text-lg mb-5 ">Edit patient</h1>
+        </div>
+        <form class="p-6" method="post">
+            <div class="lg:flex">
+                <div class="mb-5 w-full lg:w-1/2 lg:me-3">
+                    <label asp-for="FirstName" class="block mb-2 text-sm font-medium text-teal-900"></label>
+                    <input asp-for="FirstName" class="@(getInputStyles(nameof(Model.FirstName)))" />
+                    <span class="text-red-500" asp-validation-for="FirstName"></span>
+                </div>
+                <div class="mb-5 w-full lg:w-1/2 lg:ms-3">
+                    <label asp-for="LastName" class="block mb-2 text-sm font-medium text-teal-900"></label>
+                    <input asp-for="LastName" class="@(getInputStyles(nameof(Model.LastName)))" />
+                    <span class="text-red-500"  asp-validation-for="LastName"></span>
+                </div>
+            </div>
+            <div class="lg:flex">
+                <div class="mb-5 w-full lg:w-1/2 lg:me-3">
+                    <label asp-for="DateOfBirth" class="block mb-2 text-sm font-medium text-teal-900 "></label>
+                    <input type="date" asp-for="DateOfBirth" class="@(getInputStyles(nameof(Model.DateOfBirth)))" />
+                    <span class="text-red-500"  asp-validation-for="DateOfBirth"></span>
+                </div>
+                <div class="mb-5 w-full lg:w-1/2 lg:ms-3">
+                    <label asp-for="Gender" class="block mb-2 text-sm font-medium text-teal-900 "></label>
+                    <select asp-for="Gender" class="@(getInputStyles(nameof(Model.Gender)))">
+                        <option value="">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                        <option value="Prefer not to say">Prefer not to say</option>
+                    </select>
+                    <span class="text-red-500" asp-validation-for="Gender"></span>
+                </div>
+            </div>
+            <div class="lg:flex">
+                <div class="mb-5 w-full lg:w-1/2 lg:me-3">
+                    <label asp-for="ContactNumber" class="block mb-2 text-sm font-medium text-teal-900"></label>
+                    <input asp-for="ContactNumber" class="@(getInputStyles(nameof(Model.ContactNumber)))" />
+                    <span class="text-red-500" asp-validation-for="ContactNumber"></span>
+                </div>
+                <div class="mb-5 w-full lg:w-1/2 lg:ms-3">
+                    <label asp-for="Email" class="block mb-2 text-sm font-medium text-teal-900"></label>
+                    <input type="tel" asp-for="Email" class="@(getInputStyles(nameof(Model.Email)))" />
+                    <span class="text-red-500" asp-validation-for="Email"></span>
+                </div>
+            </div>
+            <div class="lg:flex">
+                <div class="mb-5 w-full lg:w-1/2 lg:me-3">
+                    <label asp-for="Address" class="block mb-2 text-sm font-medium text-teal-900"></label>
+                    <textarea asp-for="Address" class="@(getInputStyles(nameof(Model.Address)))"></textarea>
+                    <span class="text-red-500" asp-validation-for="Address"></span>
+                </div>
+                <div class="mb-5 w-full lg:w-1/2 lg:ms-3">
+                    <label asp-for="EmergencyContact" class="block mb-2 text-sm font-medium text-teal-900"></label>
+                    <textarea asp-for="EmergencyContact" class="@(getInputStyles(nameof(Model.EmergencyContact)))"></textarea>
+                    <span class="text-red-500" asp-validation-for="EmergencyContact"></span>
+                </div>
+            </div>
+            <div class="lg:flex justify-end mt-3 lg:mt-0">
+                <button type="submit" class="text-white bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm w-full lg:w-auto px-5 py-2.5 text-center">Submit</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+@section Scripts{
+	@{
+		<partial name="_ValidationScriptsPartial" />
+	}
+}
