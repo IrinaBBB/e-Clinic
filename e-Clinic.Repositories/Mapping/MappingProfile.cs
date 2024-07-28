@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using e_Clinic.DataAccess.Entities;
 using e_Clinic.Models.ViewModels.Patient;
+using e_Clinic.Models.ViewModels.PatientViewModels;
 using e_Clinic.Repository.Mapping.Resolvers;
 
 namespace e_Clinic.Repository.Mapping
@@ -17,6 +18,7 @@ namespace e_Clinic.Repository.Mapping
             CreateMap<Patient, Patient>();
             CreateMap<CreatePatientViewModel, Patient>().ReverseMap();
             CreateMap<EditPatientViewModel, Patient>().ReverseMap();
+            CreateMap<DeletePatientViewModel, Patient>().ReverseMap();
 
         }
     }

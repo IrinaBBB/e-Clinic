@@ -4,6 +4,8 @@ using e_Clinic.DataAccess.Entities;
 using e_Clinic.Models.ViewModels.Patient;
 using e_Clinic.Repository.IRepository;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace e_Clinic.Repository
 {
@@ -20,7 +22,7 @@ namespace e_Clinic.Repository
             _userManager = userManager;
         }
 
-        public async Task<bool> CreatePatient(CreatePatientViewModel patientViewModel)
+        public async Task<bool> CreatePatientAsync(CreatePatientViewModel patientViewModel)
         {
             var newPatientUser = new ApplicationUser
             {
@@ -40,6 +42,26 @@ namespace e_Clinic.Repository
                 } catch (Exception ex)
                 {
                     Console.Write(ex.Message);
+                }
+            }
+            return false;
+        }
+
+        public async Task<bool> RemovePatientWithIdentityUserAsync(int id)
+        {
+            var patient = _db.Patients.Include(p => p.ApplicationUser).FirstOrDefault(p => p.Id == id);
+            if (patient != null && patient.ApplicationUser != null) 
+            {
+                try
+                {
+                    await _userManager.DeleteAsync(patient.ApplicationUser);
+                    _db.Patients.Remove(patient);
+                    _db.SaveChanges();
+                    return true;
+                } catch (Exception ex)
+                {
+                    Console.Write(ex.Message);
+                    return false;
                 }
             }
             return false;

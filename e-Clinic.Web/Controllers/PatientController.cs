@@ -23,12 +23,6 @@ namespace e_Clinic.Web.Controllers
             _mapper = mapper;
         }
 
-
-        public IActionResult Info()
-        {
-            return View();
-        }
-        
         public async Task<IActionResult> Index(int pageNumber = 1)
         {
             var pageSize = 5;
@@ -46,6 +40,10 @@ namespace e_Clinic.Web.Controllers
             };
             return View(patientListViewModel);
         }
+        public IActionResult Info()
+        {
+            return View();
+        }
 
         public IActionResult Create()
         {
@@ -59,7 +57,7 @@ namespace e_Clinic.Web.Controllers
             if (ModelState.IsValid)
             {
                
-                await _unitOfWork.Patient.CreatePatient(patientViewModel);
+                await _unitOfWork.Patient.CreatePatientAsync(patientViewModel);
 
                 TempData["success"] = "Category created successfully";
                 return RedirectToAction("Index");
@@ -95,6 +93,28 @@ namespace e_Clinic.Web.Controllers
 
             _unitOfWork.Patient.Update(patientFromDb);
             _unitOfWork.Save();
+
+            return RedirectToAction("Index"); 
+        }
+
+        public IActionResult Delete(int id)
+        {
+            var patient = _unitOfWork.Patient.GetFirstOrDefault(p => p.Id == id);
+            var patientViewModel = _mapper.Map<DeletePatientViewModel>(patient);
+            return View(patientViewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(DeletePatientViewModel viewModel)
+        {
+            
+            var result = await _unitOfWork.Patient.RemovePatientWithIdentityUserAsync(viewModel.Id);
+            if (result)
+            {
+                return RedirectToAction("Index");
+
+            }
 
             return RedirectToAction("Index"); 
         }
