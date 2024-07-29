@@ -3,7 +3,9 @@
     public interface IUnitOfWork : IDisposable
     {
         IPatientRepository Patient { get; }
+        IDoctorRepository Doctor { get; }
         void Save();
     }
 }
+
 

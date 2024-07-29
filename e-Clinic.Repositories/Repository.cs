@@ -1,8 +1,9 @@
 ﻿using e_Clinic.DataAccess;
+using e_Clinic.DataAccess.Entities;
 using e_Clinic.Repository.IRepository;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 
 namespace e_Clinic.Repository
@@ -10,11 +11,13 @@ namespace e_Clinic.Repository
     public class Repository<T> : IRepository<T> where T : class
     {
         private readonly ApplicationDbContext _db;
+        private readonly UserManager<ApplicationUser> _userManager;
         internal DbSet<T> dbSet;
 
-        public Repository(ApplicationDbContext db)
+        public Repository(ApplicationDbContext db, UserManager<ApplicationUser> userManager)
         {
             _db = db;
+            _userManager = userManager;
             this.dbSet = _db.Set<T>();
         }
         public void Add(T entity)
@@ -53,7 +56,7 @@ namespace e_Clinic.Repository
                         query = query.Include(includeProp);
                     }
                 }
-                return query.FirstOrDefault();
+                return query.FirstOrDefault()!;
             } else
             {
                 IQueryable<T> query = dbSet.AsNoTracking();
@@ -66,9 +69,8 @@ namespace e_Clinic.Repository
                         query = query.Include(includeProp);
                     }
                 }
-                return query.FirstOrDefault();
+                return query.FirstOrDefault()!;
             }
-
         }
 
         public async Task<IEnumerable<T>> GetPagedListAsync(int pageNumber = 1, int pageSize = 50, Expression<Func<T, bool>>? filter = null, string? includeProperties = null)
@@ -87,14 +89,13 @@ namespace e_Clinic.Repository
             }
             return await query.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
         }
-
+        
         public async Task<int> GetPageCount(int pageSize)
         {
             var count = await dbSet.CountAsync();
             return (int) Math.Ceiling(count / (double)pageSize);
         }
 
-   
         public void Remove(T entity)
         {
             dbSet.Remove(entity);
@@ -104,5 +105,52 @@ namespace e_Clinic.Repository
         {
             dbSet.RemoveRange(entity);
         }
+
+        public async Task<bool> CreateUserWithIdentityAsync<U>(U user, string password) where U : BaseUser
+        {
+            var newUser = new ApplicationUser
+            {
+                Email = user.Email,
+                UserName = user.Email,
+            };
+            
+            if (user is Patient patientUser)
+            {
+                newUser.Patient = patientUser;
+            }
+
+            if (user is Doctor doctor)
+            {
+                newUser.Doctor = doctor;
+            }
+
+            if (user is StaffMember staffMember)
+            {
+                newUser.StaffMember = staffMember;
+            }
+
+            if (password is not null)
+            {
+                try
+                {
+                    var result = await _userManager.CreateAsync(newUser, password);
+                    _db.SaveChanges();
+                    return result.Succeeded;
+
+                } catch (Exception ex)
+                {
+                    Console.Write(ex.Message);
+                }
+            }
+            return false;
+        }
+
+        public async Task<bool> RemoveUserWithIdentityAsync<U>(U user) where U : BaseUser
+        {
+            var identityUserFromDb = await _userManager.FindByIdAsync(user.ApplicationUserId);
+            var result = await _userManager.DeleteAsync(identityUserFromDb);
+            return result.Succeeded;
+        }
     }
 }
+ 

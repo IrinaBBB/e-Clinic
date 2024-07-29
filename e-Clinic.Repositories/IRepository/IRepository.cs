@@ -1,4 +1,5 @@
-﻿using System.Linq.Expressions;
+﻿using e_Clinic.DataAccess.Entities;
+using System.Linq.Expressions;
 
 namespace e_Clinic.Repository.IRepository
 {
@@ -11,5 +12,7 @@ namespace e_Clinic.Repository.IRepository
         void Remove(T entity);
         void RemoveRange(IEnumerable<T> entity);
         Task<int> GetPageCount(int pageSize);
+        Task<bool> CreateUserWithIdentityAsync<U>(U user, string password) where U : BaseUser;
+        Task<bool> RemoveUserWithIdentityAsync<U>(U user) where U : BaseUser;
     }
 }
