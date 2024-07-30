@@ -2,9 +2,10 @@
 {
     public static class ClinicConstants
     {
-        public static string ROLE_ADMIN = "admin";
-        public static string ROLE_MANAGER = "manager";
-        public static string ROLE_DOCTOR = "doctor";
-        public static string ROLE_PATIENT = "patient";
+        public const string ROLE_ADMIN = "admin";
+        public const string ROLE_MANAGER = "manager";
+        public const string ROLE_DOCTOR = "doctor";
+        public const string ROLE_PATIENT = "patient";
+        public const string ROLE_STAFF = "staff";
     }
 }

@@ -1,21 +1,21 @@
 ﻿using AutoMapper;
-using e_Clinic.DataAccess.Entities;
-using e_Clinic.Models.ViewModels.Patient;
-using e_Clinic.Models.ViewModels.PatientViewModels;
+using e_Clinic.Models.ViewModels.DoctorViewModels;
 using e_Clinic.Repository.IRepository;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using e_Clinic.Models.ViewModels.Patient;
+using Microsoft.AspNetCore.Authorization;
+using e_Clinic.Utility;
 
-namespace e_Clinic.Web.Controllers
+namespace e_Clinic.Web.Areas.Admin.Controllers
 {
-    [Authorize]
-    public class PatientController : Controller
-
+    [Area("Admin")]
+    [Authorize(Roles = ClinicConstants.ROLE_ADMIN)]
+    public class DoctorController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-   
-        public PatientController(IUnitOfWork unitOfWork, IMapper mapper)
+
+        public DoctorController(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
@@ -29,7 +29,7 @@ namespace e_Clinic.Web.Controllers
             }
 
             var pageSize = 5;
-            var pageCount = await _unitOfWork.Patient.GetPageCount(pageSize);
+            var pageCount = await _unitOfWork.Doctor.GetPageCount(pageSize);
 
             if (pageCount == 0)
             {
@@ -43,39 +43,35 @@ namespace e_Clinic.Web.Controllers
             }
 
 
-            var viewModel = new PatientListViewModel
+            var viewModel = new DoctorListViewModel
             {
-                Patients = await _unitOfWork.Patient.GetPagedListAsync(pageNumber.Value, pageSize),
+                Doctors = await _unitOfWork.Doctor.GetPagedListAsync(pageNumber.Value, pageSize),
                 TotalPages = pageCount,
                 CurrentPage = pageNumber.Value,
             };
 
             return View(viewModel);
         }
-        public IActionResult Info()
-        {
-            return View();
-        }
 
         public IActionResult Create()
         {
-            return View(new CreatePatientViewModel());
+            return View(new CreateDoctorViewModel());
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(CreatePatientViewModel viewModel)
+        public async Task<IActionResult> Create(CreateDoctorViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                var newUser = _mapper.Map<Patient>(viewModel);
+                var newUser = _mapper.Map<e_Clinic.DataAccess.Entities.Doctor>(viewModel);
 
                 if (viewModel.Password != null)
                 {
-                    await _unitOfWork.Patient.CreateUserWithIdentityAsync(newUser, viewModel.Password);
+                    await _unitOfWork.Doctor.CreateUserWithIdentityAsync(newUser, viewModel.Password);
                 }
 
-                TempData["success"] = "Patient created successfully";
+                TempData["success"] = "Doctor created successfully";
                 return RedirectToAction("Index");
             }
             return View(viewModel);
@@ -83,53 +79,55 @@ namespace e_Clinic.Web.Controllers
 
         public IActionResult Edit(int id)
         {
-            var patient = _unitOfWork.Patient.GetFirstOrDefault(p => p.Id == id);
-            var viewModel = _mapper.Map<EditPatientViewModel>(patient);
+            var doctor = _unitOfWork.Doctor.GetFirstOrDefault(p => p.Id == id);
+            var viewModel = _mapper.Map<EditDoctorViewModel>(doctor);
             return View(viewModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(EditPatientViewModel viewModel)
+        public IActionResult Edit(EditDoctorViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {
                 return View(viewModel);
             }
 
-            var patient = _mapper.Map<Patient>(viewModel);
+            var doctor = _mapper.Map<e_Clinic.DataAccess.Entities.Doctor>(viewModel);
 
-            var patientFromDb = _unitOfWork.Patient.GetFirstOrDefault(p => p.Id == patient.Id);
-            if (patientFromDb == null)
+            var doctorFromDb = _unitOfWork.Doctor.GetFirstOrDefault(p => p.Id == doctor.Id);
+            if (doctorFromDb == null)
             {
                 return NotFound();
             }
 
-            _mapper.Map(viewModel, patientFromDb); 
+            _mapper.Map(viewModel, doctorFromDb);
 
-            _unitOfWork.Patient.Update(patientFromDb);
+            _unitOfWork.Doctor.Update(doctorFromDb);
             _unitOfWork.Save();
 
-            return RedirectToAction("Index"); 
+            return RedirectToAction("Index");
         }
+
 
         public IActionResult Delete(int id)
         {
-            var patient = _unitOfWork.Patient.GetFirstOrDefault(p => p.Id == id);
-            var patientViewModel = _mapper.Map<DeletePatientViewModel>(patient);
-            return View(patientViewModel);
+            var doctor = _unitOfWork.Doctor.GetFirstOrDefault(p => p.Id == id);
+            var viewModel = _mapper.Map<DeleteDoctorViewModel>(doctor);
+            return View(viewModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Delete(DeletePatientViewModel viewModel)
+        public async Task<IActionResult> Delete(DeleteDoctorViewModel viewModel)
         {
-            var user = _unitOfWork.Patient.GetFirstOrDefault(u => u.Id == viewModel.Id);
-            var result = await _unitOfWork.Patient.RemoveUserWithIdentityAsync(user);
+            var user = _unitOfWork.Doctor.GetFirstOrDefault(u => u.Id == viewModel.Id);
+            var result = await _unitOfWork.Doctor.RemoveUserWithIdentityAsync(user);
             if (result)
             {
                 return RedirectToAction("Index");
             }
+
             return RedirectToAction("Index");
         }
 

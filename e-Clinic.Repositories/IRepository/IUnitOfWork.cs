@@ -4,6 +4,7 @@
     {
         IPatientRepository Patient { get; }
         IDoctorRepository Doctor { get; }
+        IStaffRepository Staff { get; }
         void Save();
     }
 }

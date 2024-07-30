@@ -3,6 +3,7 @@ using e_Clinic.DataAccess.Entities;
 using e_Clinic.Models.ViewModels.DoctorViewModels;
 using e_Clinic.Models.ViewModels.Patient;
 using e_Clinic.Models.ViewModels.PatientViewModels;
+using e_Clinic.Models.ViewModels.StaffViewModels;
 
 namespace e_Clinic.Repository.Mapping
 {
@@ -24,6 +25,11 @@ namespace e_Clinic.Repository.Mapping
             CreateMap<CreateDoctorViewModel, Doctor>().ReverseMap();
             CreateMap<EditDoctorViewModel, Doctor>().ReverseMap();
             CreateMap<DeleteDoctorViewModel, Doctor>().ReverseMap();
+
+            CreateMap<StaffMember, StaffMember>();
+            CreateMap<CreateStaffViewModel, StaffMember>().ReverseMap();
+            CreateMap<EditStaffViewModel, StaffMember>().ReverseMap();
+            CreateMap<DeleteStaffViewModel, StaffMember>().ReverseMap();
         }
     }
 }

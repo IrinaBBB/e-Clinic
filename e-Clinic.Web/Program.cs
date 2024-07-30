@@ -40,10 +40,14 @@ app.UseAuthentication();;
 
 app.UseAuthorization();
 
+app.MapRazorPages();
+app.MapControllerRoute(
+    name: "default_with_area",
+    pattern: "{area:exists}/{controller}/{action=Index}/{id?}");
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-app.MapRazorPages();
 
 var scope = app.Services.CreateScope();
 var services = scope.ServiceProvider;

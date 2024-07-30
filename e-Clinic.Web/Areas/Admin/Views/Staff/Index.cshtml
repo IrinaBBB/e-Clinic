@@ -1,0 +1,82 @@
+﻿@using e_Clinic.DataAccess.Entities
+@using e_Clinic.Models.ViewModels.PatientViewModels
+@{
+    ViewData["Title"] = "Staff List";
+}
+
+@model StaffListViewModel
+
+
+<section class="container mx-auto p-6 w-3/4">
+    <div class="w-full mb-3 overflow-hidden rounded-lg shadow-lg">
+        <div class="w-full overflow-x-auto">
+            <table class="w-full">
+                <thead>
+                    <tr class="text-md w-10 tracking-wide text-left text-teal-900 bg-white uppercase border-b-2 border-teal-600">
+                        <th class="px-4 py-3 font-light text-lg items-center flex">
+                            <svg class="w-8 me-2" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" viewBox="0 0 401.362 401.362" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path d="M224.614 18.878H184.79c-15.243.021-27.593 12.373-27.611 27.616v70.122H48.606C21.769 116.647.023 138.399 0 165.236v168.633c.028 26.834 21.772 48.582 48.606 48.615h304.141c26.837-.031 48.584-21.779 48.615-48.615V165.236c-.031-26.836-21.779-48.582-48.615-48.61h-100.48V46.504c-.023-15.259-12.395-27.618-27.653-27.626zm-51.13 105.886v-78.26c.005-6.247 5.067-11.311 11.314-11.319h39.815c6.258-.003 11.338 5.061 11.356 11.319v99.689c-.005 6.271-5.086 11.353-11.356 11.361h-39.824c-6.258-.021-11.32-5.103-11.314-11.361zm179.263 8.149c17.843.018 32.303 14.48 32.318 32.323v168.633c-.021 17.841-14.478 32.298-32.318 32.319H48.606c-17.838-.023-32.291-14.481-32.309-32.319V165.236c.018-17.837 14.472-32.293 32.309-32.314h108.582v13.27c.005 15.255 12.357 27.627 27.611 27.658h39.815c15.267-.018 27.638-12.391 27.653-27.658v-13.27z" fill="#042f2e" opacity="1" data-original="#000000" class=""></path><path d="M140.882 248.181c15.954-14.201 17.375-38.647 3.174-54.601s-38.647-17.375-54.601-3.174-17.375 38.647-3.174 54.601a38.643 38.643 0 0 0 3.174 3.174 54.659 54.659 0 0 0-28.915 48.173v13.689c0 4.5 3.648 8.148 8.148 8.148h92.956c4.5 0 8.148-3.648 8.148-8.148v-13.689a54.658 54.658 0 0 0-28.91-48.173zm-25.716-50.971c12.292.051 22.215 10.058 22.163 22.349-.051 12.292-10.058 22.215-22.349 22.163-12.255-.051-22.163-10.001-22.163-22.256.05-12.307 10.042-22.256 22.349-22.256zm38.329 104.685H76.836v-5.541c-.003-21.169 17.156-38.332 38.324-38.335 21.169-.003 38.332 17.156 38.335 38.324v.01zM204.727 118.432c12.192.003 22.077-9.879 22.08-22.07.003-12.192-9.879-22.077-22.07-22.08-12.192-.003-22.077 9.879-22.08 22.07v.009c.015 12.183 9.888 22.056 22.07 22.071zm0-27.849a5.778 5.778 0 1 1-5.774 5.783v-.005a5.784 5.784 0 0 1 5.774-5.778zM245.594 216.724h-32.752a8.148 8.148 0 0 0 0 16.296h32.751c4.5 0 8.148-3.648 8.148-8.148s-3.646-8.148-8.147-8.148zM285.889 233.02h56.144a8.148 8.148 0 0 0 0-16.296h-56.144a8.148 8.148 0 0 0 0 16.296zM342.033 249.392h-129.19a8.148 8.148 0 0 0 0 16.296h129.19a8.148 8.148 0 0 0 0-16.296zM286.499 282.064h-73.656a8.148 8.148 0 0 0 0 16.296h73.656a8.148 8.148 0 0 0 0-16.296zM342.033 282.064h-16.716a8.148 8.148 0 0 0 0 16.296h16.716a8.148 8.148 0 0 0 0-16.296z" fill="#042f2e" opacity="1" data-original="#000000" class=""></path></g></svg>
+                            <span>Staff Members</span>
+                        </th>
+                        <th class="px-4 py-3">&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white">
+                    @foreach (var item in Model.StaffMembers!)
+                    {
+                        <tr class="text-gray-700 even:bg-white odd:bg-teal-50 hover:bg-emerald-100">
+                            <td class="px-4 py-3 border">
+                                <div class="flex items-center text-md">
+                                    <div class="relative w-8 h-8 mr-3 rounded-full md:block">
+                                        <img class="object-cover w-full h-full rounded-full" src="https://images.pexels.com/photos/5212324/pexels-photo-5212324.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="" loading="lazy"/>
+                                        <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-black">@item.FirstName @item.LastName</p>
+                                        <p class="text-sm text-gray-600 mt-1">
+                                            <span class="text-slate-900 text-bold">Date of Birth:</span> @item.DateOfBirth.ToString("dd MMMM yyyy")
+                                        </p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-4 py-3 text-xs border">
+                                <a asp-controller="Staff" asp-action="Info" asp-route-id="@item.Id" class="px-3 py-2 font-semibold uppercase leading-tight text-yellow-700 bg-yellow-100 rounded-sm transition ease-in-out delay-150 hover:bg-yellow-200">Info</a>
+                                <a asp-controller="Staff" asp-action="Edit" asp-route-id="@item.Id" class="px-3 py-2 font-semibold uppercase leading-tight text-blue-700 bg-blue-100 rounded-sm transition ease-in-out delay-150 hover:bg-blue-200">Edit</a>
+                                <a asp-controller="Staff" asp-action="Delete" asp-route-id="@item.Id" class="px-3 py-2 font-semibold uppercase leading-tight text-pink-700 bg-pink-100 rounded-sm transition ease-in-out delay-150 hover:bg-pink-200">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    @if (Model.TotalPages > 1)
+    {
+        <div class="flex justify-end">
+            <nav aria-label="Page navigation">
+                <ul class="inline-flex -space-x-px text-sm shadow-lg overflow-hidden">
+                    <li>
+                        <a asp-controller="Staff" asp-action="Index" asp-route-pageNumber="@((Model.CurrentPage - 1 > 0) ? Model.CurrentPage - 1 : 1)" class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700">Previous</a>
+                    </li>
+                    @for (int i = 1; i <= Model.TotalPages; i++)
+                    {
+                        @if (i == Model.CurrentPage)
+                        {
+                            <li>
+                                <a asp-controller="Staff" asp-action="Index" asp-route-pageNumber="@i" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-teal-50 border border-gray-300 hover:bg-gray-100 hover:text-gray-700">@i</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a asp-controller="Staff" asp-action="Index" asp-route-pageNumber="@i" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">@i</a>
+                            </li>
+                        }
+                    }   
+                    <li>
+                        <a asp-action="Index" asp-route-pageNumber="@((Model.CurrentPage + 1 > Model.TotalPages) ? Model.CurrentPage : Model.CurrentPage + 1)" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    }
+</section>

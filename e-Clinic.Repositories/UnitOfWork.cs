@@ -19,10 +19,12 @@ namespace e_Clinic.Repository
             _userManager = userManager;
             Patient = new PatientRepository(_context, _mapper, _userManager);
             Doctor = new DoctorRepository(_context, _mapper, _userManager);
+            Staff = new StaffRepository(_context, _mapper, _userManager);
         }
 
         public IPatientRepository Patient { get; private set; }
         public IDoctorRepository Doctor { get; private set; }
+        public IStaffRepository Staff { get; private set; }
 
         public void Dispose()
         {

@@ -1,8 +1,10 @@
 ﻿using e_Clinic.DataAccess;
 using e_Clinic.DataAccess.Entities;
 using e_Clinic.Repository.IRepository;
+using e_Clinic.Utility;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq.Expressions;
 
 
@@ -113,20 +115,25 @@ namespace e_Clinic.Repository
                 Email = user.Email,
                 UserName = user.Email,
             };
-            
+
+            string role = ""; 
+
             if (user is Patient patientUser)
             {
                 newUser.Patient = patientUser;
+                role = ClinicConstants.ROLE_PATIENT;
             }
 
             if (user is Doctor doctor)
             {
                 newUser.Doctor = doctor;
+                role = ClinicConstants.ROLE_DOCTOR;
             }
 
             if (user is StaffMember staffMember)
             {
                 newUser.StaffMember = staffMember;
+                role = ClinicConstants.ROLE_STAFF;
             }
 
             if (password is not null)
@@ -134,6 +141,11 @@ namespace e_Clinic.Repository
                 try
                 {
                     var result = await _userManager.CreateAsync(newUser, password);
+                    var userForRole = _db.ApplicationUsers.FirstOrDefault(u => u.Email == newUser.Email)!;
+                    if (user != null)
+                    {
+                        _userManager.AddToRoleAsync(userForRole!, role).GetAwaiter().GetResult();
+                    }
                     _db.SaveChanges();
                     return result.Succeeded;
 

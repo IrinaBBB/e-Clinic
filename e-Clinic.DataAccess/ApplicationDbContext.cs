@@ -15,6 +15,7 @@ namespace e_Clinic.DataAccess
 
         }
 
+        public DbSet<ApplicationUser> ApplicationUsers => Set<ApplicationUser>();
         public DbSet<Appointment> Appointments => Set<Appointment>();
         public DbSet<Billing> Billings => Set<Billing>();
         public DbSet<Doctor> Doctors => Set<Doctor>();
