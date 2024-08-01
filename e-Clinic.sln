@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "e-Clinic.Models", "e-Clinic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "e-Clinic.Repository", "e-Clinic.Repositories\e-Clinic.Repository.csproj", "{AE33662D-5987-46F1-8358-6CEA9B5F4608}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "e-Clinic.Hubs", "e-Clinic.Hubs\e-Clinic.Hubs.csproj", "{F304E0CB-D60B-4B64-8F20-B9AD3B337A8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "e-Clinic.Hubs", "e-Clinic.Hubs\e-Clinic.Hubs.csproj", "{F304E0CB-D60B-4B64-8F20-B9AD3B337A8B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

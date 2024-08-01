@@ -11,6 +11,6 @@ namespace e_Clinic.Web.Areas.Admin.Controllers
         public IActionResult Index()
         {
             return View();
-        }
+        }        
     }
 }

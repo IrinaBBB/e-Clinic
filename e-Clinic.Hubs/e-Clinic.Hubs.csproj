@@ -11,4 +11,10 @@
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\e-Clinic.Utility\e-Clinic.Utility.csproj" />
+  </ItemGroup>
+
+ 
+
 </Project>

@@ -52,6 +52,7 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.MapHub<UserHub>("/hubs/userCount");
+app.MapHub<DeathlyHallowsHub>("/hubs/deathlyhallows");
 
 var scope = app.Services.CreateScope();
 var services = scope.ServiceProvider;
