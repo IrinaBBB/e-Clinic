@@ -17,6 +17,8 @@
     <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="6.0.23" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.23" />
   </ItemGroup>
+  
+ 
 
   <ItemGroup>
     <ProjectReference Include="..\e-Clinic.Utility\e-Clinic.Utility.csproj" />

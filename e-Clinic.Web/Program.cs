@@ -6,6 +6,7 @@ using e_Clinic.Repository.Mapping.Resolvers;
 using e_Clinic.DataAccess.Entities;
 using e_Clinic.DataAccess;
 using e_Clinic.DataAccess.DbInitializer;
+using e_Clinic.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 //var connectionString = builder.Configuration.GetConnectionString("eClinicDb") ?? throw new InvalidOperationException("Connection string 'eClinicDb' not found.");
@@ -23,6 +24,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddTransient<AgeResolver>();
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddSignalR();
 
 var app = builder.Build();
 
@@ -36,7 +38,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-app.UseAuthentication();;
+app.UseAuthentication();
 
 app.UseAuthorization();
 
@@ -48,6 +50,8 @@ app.MapControllerRoute(
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.MapHub<UserHub>("/hubs/userCount");
 
 var scope = app.Services.CreateScope();
 var services = scope.ServiceProvider;

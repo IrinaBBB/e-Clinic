@@ -26,6 +26,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\e-Clinic.DataAccess\e-Clinic.DataAccess.csproj" />
+	  <ProjectReference Include="..\e-Clinic.Hubs\e-Clinic.Hubs.csproj" />
 	  <ProjectReference Include="..\e-Clinic.Repositories\e-Clinic.Repository.csproj" />
 	  <ProjectReference Include="..\e-Clinic.Utility\e-Clinic.Utility.csproj" />
 	</ItemGroup>

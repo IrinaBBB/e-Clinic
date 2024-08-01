@@ -1,0 +1,50 @@
+﻿@using e_Clinic.DataAccess.Entities
+@using e_Clinic.Models.ViewModels.PatientViewModels
+@{
+    ViewData["Title"] = "Home";
+}
+
+<section id="section" class="container mx-auto mb-6 mt-6 ">
+    <div class="max-w-sm m-auto rounded-lg overflow-hidden shadow-lg bg-white p-6">
+        <div class="flex items-center justify-between mb-4">
+            <div class="font-bold text-xl text-teal-700">Active Connections</div>
+            <svg class="w-8 h-8 text-teal-700" fill="currentColor" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                <path d="M24.05 4.79a1 1 0 0 0-1.41 0 1 1 0 0 0 0 1.42l3.95 4H10.13a1 1 0 1 0 0 2h16.46l-3.95 3.95a1 1 0 0 0 0 1.41 1 1 0 0 0 .7.29 1 1 0 0 0 .71-.29l5.66-5.66a1 1 0 0 0 0-1.41z"></path>
+                <path d="M8 27.21a1 1 0 0 0 .71.29 1 1 0 0 0 .7-1.71l-4-3.95h16.46a1 1 0 0 0 0-2H5.41l3.95-3.95a1 1 0 0 0-1.36-1.41l-5.71 5.66a1 1 0 0 0 0 1.41z"></path>
+            </svg>
+
+        </div>
+        <div class="text-center text-gray-900 text-5xl font-semibold mb-4">
+            <span id="totalViewsCounter"></span>
+        </div>
+        <div class="text-center">
+            <p class="text-gray-600">Currently online</p>
+            <button class="mt-4 bg-teal-700 text-white py-2 px-4 rounded hover:bg-teal-600 transition duration-300">
+                View Details
+            </button>
+        </div>
+    </div>
+    <div class="max-w-sm m-auto  mt-4 rounded-lg overflow-hidden shadow-lg bg-white p-6">
+        <div class="flex items-center justify-between mb-4">
+            <div class="font-bold text-xl text-teal-700">Active Users</div>
+            <svg class="w-8 h-8 text-teal-700" fill="currentColor" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                <path d="M24.05 4.79a1 1 0 0 0-1.41 0 1 1 0 0 0 0 1.42l3.95 4H10.13a1 1 0 1 0 0 2h16.46l-3.95 3.95a1 1 0 0 0 0 1.41 1 1 0 0 0 .7.29 1 1 0 0 0 .71-.29l5.66-5.66a1 1 0 0 0 0-1.41z"></path>
+                <path d="M8 27.21a1 1 0 0 0 .71.29 1 1 0 0 0 .7-1.71l-4-3.95h16.46a1 1 0 0 0 0-2H5.41l3.95-3.95a1 1 0 0 0-1.36-1.41l-5.71 5.66a1 1 0 0 0 0 1.41z"></path>
+            </svg>
+        </div>
+        <div class="text-center text-gray-900 text-5xl font-semibold mb-4">
+            <span id="totalUsersCounter"></span>
+        </div>
+        <div class="text-center">
+            <p class="text-gray-600">Currently online</p>
+            <button class="mt-4 bg-teal-700 text-white py-2 px-4 rounded hover:bg-teal-600 transition duration-300">
+                View Details
+            </button>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script src="~/lib/microsoft-signalr/signalr.js"></script>
+    <script src="~/js/usersCount.js"></script>
+}

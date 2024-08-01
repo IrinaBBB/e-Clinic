@@ -26,7 +26,7 @@ namespace e_Clinic.Web.Controllers
         {
             if (User.IsInRole(ClinicConstants.ROLE_ADMIN))
             {
-                return RedirectToAction("Index", "Doctor", new { area = "Admin" });
+                return RedirectToAction("Index", "Home", new { area = "Admin" });
             } 
             else if (User.IsInRole(ClinicConstants.ROLE_STAFF))
             {

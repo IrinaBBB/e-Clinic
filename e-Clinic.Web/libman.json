@@ -5,12 +5,14 @@
     {
       "library": "tailwindcss@2.2.19",
       "destination": "wwwroot/lib/tailwindcss/"
+    },
+    {
+      "library": "flowbite@1.8.1",
+      "destination": "wwwroot/lib/flowbite/"
+    },
+    {
+      "library": "microsoft-signalr@8.0.7",
+      "destination": "wwwroot/lib/microsoft-signalr/"
     }
-  ,
-{
-  "provider": "cdnjs",
-  "library": "flowbite@1.8.1",
-  "destination": "wwwroot/lib/flowbite/"
-}
-]
+  ]
 }
