@@ -1,0 +1,46 @@
+﻿<div class="border p-4 mt-6">
+    <h3 class="text-xl font-semibold">Subscribed List:</h3>
+    <hr class="my-2 border-gray-300" />
+    <div class="p-4">
+        <label class="text-red-700" id="lbl_houseJoined"></label>
+    </div>
+</div>
+
+<div class="border p-4 mt-6">
+    <h3 class="text-xl font-semibold">Subscribe:</h3>
+    <hr class="my-2 border-gray-300" />
+    <div class="grid grid-cols-4 gap-4 p-4">
+        <button type="button" class="py-2 px-4 rounded bg-red-700 text-white" id="btn_gryffindor">Gryffindor</button>
+        <button class="py-2 px-4 rounded bg-green-700 text-white" id="btn_slytherin">Slytherin</button>
+        <button class="py-2 px-4 rounded bg-yellow-500 text-white" id="btn_hufflepuff">Hufflepuff</button>
+        <button class="py-2 px-4 rounded bg-blue-700 text-white" id="btn_ravenclaw">Ravenclaw</button>
+    </div>
+</div>
+
+<div class="border p-4 mt-6">
+    <h3 class="text-xl font-semibold">Unsubscribe:</h3>
+    <hr class="my-2 border-gray-300" />
+    <div class="grid grid-cols-4 gap-4 p-4">
+        <button style="display:none" class="py-2 px-4 rounded bg-red-700 text-white" id="btn_un_gryffindor">Gryffindor</button>
+        <button style="display:none" class="py-2 px-4 rounded bg-green-700 text-white" id="btn_un_slytherin">Slytherin</button>
+        <button style="display:none" class="py-2 px-4 rounded bg-yellow-500 text-white" id="btn_un_hufflepuff">Hufflepuff</button>
+        <button style="display:none" class="py-2 px-4 rounded bg-blue-700 text-white" id="btn_un_ravenclaw">Ravenclaw</button>
+    </div>
+</div>
+
+<div class="border p-4 mt-6">
+    <h3 class="text-xl font-semibold">Trigger Notification:</h3>
+    <hr class="my-2 border-gray-300" />
+    <div class="grid grid-cols-4 gap-4 p-4">
+        <button class="py-2 px-4 rounded bg-red-700 text-white" id="trigger_gryffindor">Gryffindor</button>
+        <button class="py-2 px-4 rounded bg-green-700 text-white" id="trigger_slytherin">Slytherin</button>
+        <button class="py-2 px-4 rounded bg-yellow-500 text-white" id="trigger_hufflepuff">Hufflepuff</button>
+        <button class="py-2 px-4 rounded bg-blue-700 text-white" id="trigger_ravenclaw">Ravenclaw</button>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script src="~/lib/microsoft-signalr/signalr.js"></script>
+    <script src="~/js/houseGroup.js"></script>
+}

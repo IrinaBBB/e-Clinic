@@ -9,8 +9,8 @@ var connectionDeathlyHallows = new signalR.HubConnectionBuilder()
     .withUrl("/hubs/deathlyhallows").build();
 
 //connect to methods that hub invokes aka receive notfications from hub
-connectionDeathlyHallows.on("updateDealthyHallowCount", (cloak, stone, wand) => {
-    cloakSpan.innerText = cloak.toString();
+connectionDeathlyHallows.on("updateDealthyHallowCount", (cloack, stone, wand) => {
+    cloakSpan.innerText = cloack.toString();
     stoneSpan.innerText = stone.toString();
     wandSpan.innerText = wand.toString();
 });
@@ -21,8 +21,13 @@ connectionDeathlyHallows.on("updateDealthyHallowCount", (cloak, stone, wand) => 
 
 //start connection
 function fulfilled() {
+    connectionDeathlyHallows.invoke("GetRaceStatus").then((raceCounter) => {
+        cloakSpan.innerText = raceCounter.cloack.toString();
+        stoneSpan.innerText = raceCounter.stone.toString();
+        wandSpan.innerText = raceCounter.wand.toString();
+    });
     //do something on start
-    console.log("Connection to Deathly Hub Successful");
+    console.log("Connection to Deathly Hallow Hub Successful");
 }
 function rejected() {
     //rejected logs
